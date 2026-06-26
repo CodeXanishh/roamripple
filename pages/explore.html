@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Popular Places</title>
+    <link rel="stylesheet" href="../css/explore.css">
+</head>
+<body>
+
+
+<a href="./bookings.html" class="view-bookings-btn">View Bookings</a>
+
+
+<header class="header">
+    <h1>Popular Places</h1>
+    <p>Pick a destination and book your journey</p>
+</header>
+
+<section class="explore-container" id="explore-list">
+    <!-- Cards will auto-load from JS -->
+</section>
+
+<!-- Include your modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <img id="modal-img" src="" class="modal-img">
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+
+        <iframe id="map-frame" width="100%" height="250" style="border:0;" loading="lazy"></iframe>
+
+        <div id="weather-box"></div>
+
+        <label>Select Visit Date</label>
+        <input type="date" id="visit-date">
+
+        <button id="book-btn">Book Now</button>
+    </div>
+</div>
+
+<script  type="module" src="../js/explore.js"></script>
+</body>
+</html>

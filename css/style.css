@@ -1,0 +1,376 @@
+
+@import url("variables.css");
+@import url("navbar.css");
+@import url("hero.css");
+@import url("cards.css");
+@import url("modal.css");
+@import url("ai.css");
+@import url("responsive.css");
+/* Base */
+body {
+    body{
+    margin:0;
+    font-family:"Poppins",sans-serif;
+    background:#f4f7fb;
+    color:#1a1a1a;
+    animation:fadeInBody .6s ease;
+
+}
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@keyframes fadeInBody {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Header */
+
+
+/* Top Right Buttons */
+/* .top-right {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.view-bookings-btn {
+    padding: 10px 18px;
+    background: #2f6bff;
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.view-bookings-btn:hover {
+    background: #1f54d6;
+} */
+
+/* Hero Section */
+.hero {
+    position: relative;
+    margin-top: 40px;
+    height: 55vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    z-index: 1;
+}
+
+.hero-img {
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9) contrast(1.1) saturate(1.1);
+}
+
+.hero-content {
+    position: absolute;
+    text-align: center;
+    animation: fadeSlide 1s ease forwards;
+}
+
+.hero-content h1 {
+    font-size: 2.4rem;
+    color: #1e2a3a;
+}
+
+.hero-content p {
+    color: #566577;
+    margin-bottom: 25px;
+}
+
+.hero-btn {
+    padding: 12px 26px;
+    background: #2f6bff;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.hero-btn:hover {
+    background: #1f54d6;
+}
+
+/* Filters section */
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 0;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    margin-top: 40px;
+    z-index: 5;
+}
+
+/* Search */
+#search-input {
+    width: 60%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #1a1a1a;
+    border: 1px solid #2f6bff;
+    outline: none;
+}
+
+#search-input::placeholder {
+    color: #9aa0a6;
+}
+
+/* Suggestions dropdown */
+.suggestions-box {
+    position: absolute;
+    top: 60px;
+    width: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 240px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    color: #1a1a1a;
+    display: none;
+    z-index: 9999;
+}
+
+.suggestion-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    color: #1a1a1a;
+}
+
+.suggestion-item:hover {
+    background: #e6efff;
+}
+
+/* Destination Cards */
+.destinations {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    padding: 30px 40px;
+    z-index: 1;
+}
+
+.card {
+    background: #ffffff;
+    backdrop-filter: blur(6px);
+    padding: 15px;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    animation: fadeSlide 0.7s ease forwards;
+    transition: box-shadow 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.card:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Buttons */
+.explore-btn,
+#book-btn {
+    padding: 10px 22px;
+    background: #2f6bff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.explore-btn:hover,
+#book-btn:hover {
+    background: #1f54d6;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.two-column {
+    display: flex;
+    gap: 25px;
+    width: 80vw;
+    height: 70vh;
+    background: #ffffff;
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* Modal Left */
+.left-side {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.left-side img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.weather-box {
+    padding: 10px;
+    border-radius: 10px;
+    background: #f4f7fb;
+    text-align: center;
+}
+
+/* Modal Right */
+.right-side {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.right-side iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.map-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    background: #2f6bff;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.map-btn:hover {
+    background: #1f54d6;
+}
+
+/* Fade In */
+@keyframes fadeSlide {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* AI Helper */
+.ai-helper {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 300px;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transition: 0.35s ease;
+    z-index: 50;
+}
+
+.ai-helper.active {
+    height: 430px;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+/* AI Inner */
+.ai-header {
+    background: #2f6bff;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-weight: 700;
+}
+
+.ai-chat {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f4f7fb;
+}
+
+.ai-msg {
+    background: #e6efff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.ai-input-box {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    background: #f4f7fb;
+}
+
+#ai-input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #1a1a1a;
+}
+
+#ai-send {
+    padding: 8px 12px;
+    background: #2f6bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}

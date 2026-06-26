@@ -1,0 +1,128 @@
+@import url("variables.css");
+/* ---------- PAGE ---------- */
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f4f7fb;     /* bright clean background */
+    color: #1a1a1a;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+    padding: 45px 0 5px;
+}
+
+.header h1 {
+    font-size: 36px;
+    margin-bottom: 6px;
+    color: #2f62ff;   /* bright blue heading */
+}
+
+.header p {
+    font-size: 15px;
+    color: #5f6c7a;   /* soft gray subtext */
+}
+
+/* ---------- BOOKING LIST ---------- */
+.booking-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* ---------- BOOKING CARD ---------- */
+.booking-card {
+    background: #ffffff; /* bright white card */
+    padding: 20px 18px;
+    border-radius: 16px;
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08); /* soft bright shadow */
+    border: 1px solid #e2e8f0;              /* light white border */
+
+    text-align: left;
+    transition: 0.25s ease;
+}
+
+.booking-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    border-color: #cbd5e1;
+}
+
+/* Title */
+.booking-card h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    color: #1e2a3a;     /* deep navy */
+    font-weight: 600;
+}
+
+/* Date */
+.booking-card p {
+    margin: 0;
+    color: #566577;
+    font-size: 15px;
+}
+
+/* ---------- DELETE BUTTON ---------- */
+.delete-btn {
+    margin-top: 14px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: #ff5252;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+.delete-btn:hover {
+    background: #d63a3a;
+}
+
+/* ---------- ACTION BUTTONS ---------- */
+.bottom-actions {
+    margin: 45px 0 70px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.action-btn {
+    background: #2f6bff;
+    color: white;
+    padding: 12px 26px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.action-btn:hover {
+    background: #1f54d6;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Red clear button */
+.clear-btn {
+    background: #ff4d4d;
+}
+
+.clear-btn:hover {
+    background: #d93737;
+}

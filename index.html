@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoamRipple Travel Planner</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            🌍 <span>RoamRipple</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="pages/explore.html">Explore</a></li>
+            <li><a href="pages/bookings.html">Bookings</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button id="open-ai" class="nav-btn secondary">AI Guide</button>
+
+            <a href="pages/bookings.html">
+                <button class="nav-btn primary">
+                    My Trips
+                </button>
+            </a>
+        </div>
+
+    </nav>
+</header>
+
+<div class="filters fade-in" style="position: relative;">
+    <input type="text" id="search-input" placeholder="Search any place worldwide...">
+
+    <!-- Suggestions dropdown -->
+    <div id="suggestions" class="suggestions-box"></div>
+
+   
+</div>
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+
+        <h1>
+            Discover Your Next
+            <span>Adventure</span>
+        </h1>
+
+        <p>
+            Plan unforgettable journeys with AI-powered recommendations,
+            live weather, maps and smart trip planning.
+        </p>
+
+        <div class="hero-search">
+
+            <input
+                id="search-input"
+                type="text"
+                placeholder="Search destinations..."
+            >
+
+            <button>
+                Explore
+            </button>
+
+        </div>
+
+        <div class="hero-stats">
+
+            <div>
+                <h3>15+</h3>
+                <span>Destinations</span>
+            </div>
+
+            <div>
+                <h3>10K+</h3>
+                <span>Travelers</span>
+            </div>
+
+            <div>
+                <h3>4.9★</h3>
+                <span>Rating</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+    <section class="destinations fade-in" id="destinations">
+        <div class="card" data-category="beach">
+            <img src="images/Goa.jpg" alt="Goa">
+            <h2>Goa</h2>
+            <p>Golden shores and midnight waves</p>
+            <button class="explore-btn">Explore</button>
+        </div>
+
+        <div class="card" data-category="Mountain">
+
+            <img src="images/manali.jpg" alt="Manali">
+            <h2>Manali</h2>
+            <p>Snow peaks glowing under starlight</p>
+            <button class="explore-btn">Explore</button>
+        </div>
+
+        <div class="card" data-category="Spiritual">
+            <img src="images/rishikesh.jpg" alt="Rishikesh">
+            <h2>Rishikesh</h2>
+            <p>Serenity humming through the hills</p>
+            <button class="explore-btn">Explore</button>
+        </div>
+    </section>
+
+    <!-- Modal (hidden for now) -->
+    <div class="modal" id="modal">
+     <div class="modal-content two-column">
+    <span class="close-btn">&times;</span>
+
+    <div class="left-side">
+        <img id="modal-img">
+
+        <h2 id="modal-title"></h2>
+        <p id="modal-desc"></p>
+
+        <div id="weather-box" class="weather-box"></div>
+
+        <label>Select Date</label>
+        <input type="date" id="visit-date">
+
+        <button id="book-btn">Book Visit</button>
+    </div>
+
+    <div class="right-side">
+        <iframe 
+            id="map-frame"
+            class="map-frame"
+            width="100%" 
+            height="100%" 
+            style="border:0; border-radius:10px;" 
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+
+        <button id="open-full-map" class="map-btn">Open Full Map</button>
+        <button id="satellite-toggle" class="map-btn">Satellite Mode</button>
+        <button id="route-btn" class="map-btn">Show Route</button>
+    </div>
+
+</div>
+
+
+
+    </div>
+    <div class="ai-helper" id="ai-panel">
+    <div class="ai-header">RoamRipple AI Guide</div>
+    <div class="ai-chat" id="ai-chat"></div>
+
+    <div class="ai-input-box">
+        <input type="text" id="ai-input" placeholder="Ask something...">
+        <button id="ai-send">Send</button>
+    </div>
+</div>
+
+
+
+    <script src="js/script.js"></script>
+</body>
+</html>
