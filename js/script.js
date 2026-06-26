@@ -297,3 +297,4 @@ document.getElementById("hero-search-btn").addEventListener("click", () => {
     }
 
 });
+alert("Trip booked");
