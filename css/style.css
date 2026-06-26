@@ -9,6 +9,7 @@
 @import url("features.css");
 @import url("testimonials.css");
 @import url("footer.css");
+@import url("responsive.css");
 /* Base */
 body {
     body{
@@ -355,4 +356,73 @@ html {
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
+}
+.menu-toggle{
+
+display:none;
+
+font-size:30px;
+
+color:white;
+
+cursor:pointer;
+
+}
+@media(max-width:768px){
+
+.menu-toggle{
+
+display:block;
+
+}
+
+.nav-links{
+
+position:absolute;
+
+top:80px;
+
+left:0;
+
+width:100%;
+
+background:#07111F;
+
+flex-direction:column;
+
+display:none;
+
+padding:30px 0;
+
+}
+
+.nav-links.active{
+
+display:flex;
+
+}
+
+.nav-actions{
+
+display:none;
+
+}
+
+}
+.reveal{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:all .8s;
+
+}
+
+.reveal.active{
+
+opacity:1;
+
+transform:translateY(0);
+
 }

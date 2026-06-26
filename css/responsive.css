@@ -1,0 +1,91 @@
+@media (max-width:992px){
+
+.hero h1{
+font-size:3rem;
+}
+
+.hero-search{
+flex-direction:column;
+align-items:center;
+}
+
+.hero-search input{
+width:90%;
+}
+
+.hero-search button{
+width:220px;
+}
+
+.hero-stats{
+gap:30px;
+}
+
+.footer-container{
+
+grid-template-columns:1fr 1fr;
+
+}
+
+}
+@media (max-width:768px){
+
+.hero{
+
+padding:120px 20px 80px;
+
+}
+
+.hero h1{
+
+font-size:2.3rem;
+
+}
+
+.hero p{
+
+font-size:1rem;
+
+}
+
+.hero-stats{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.feature-grid,
+.testimonial-grid,
+.destinations{
+
+grid-template-columns:1fr;
+
+}
+
+.footer-container{
+
+grid-template-columns:1fr;
+
+text-align:center;
+
+}
+
+.newsletter-box{
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.newsletter-box input,
+.newsletter-box button{
+
+width:100%;
+border-radius:10px;
+
+}
+
+}

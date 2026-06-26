@@ -14,3 +14,11 @@ navbar.classList.remove("scrolled");
 }
 
 });
+const toggle=document.querySelector(".menu-toggle");
+const links=document.querySelector(".nav-links");
+
+toggle.addEventListener("click",()=>{
+
+links.classList.toggle("active");
+
+});
