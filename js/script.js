@@ -275,29 +275,45 @@ aiInput.addEventListener("keydown", (e) => {
 // AI PANEL TOGGLE
 // =========================
 document.addEventListener("DOMContentLoaded", () => {
+
     const openAI = document.getElementById("open-ai");
     const aiPanel = document.getElementById("ai-panel");
 
-    openAI.addEventListener("click", () => {
-        aiPanel.classList.toggle("active");
-    });
-});
-document.getElementById("hero-search-btn").addEventListener("click", () => {
+    if (openAI && aiPanel) {
 
-    const search = document
-        .getElementById("search-input")
-        .value
-        .trim();
-
-    if(search){
-
-        window.location.href =
-        `pages/explore.html?search=${encodeURIComponent(search)}`;
+        openAI.addEventListener("click", () => {
+            aiPanel.classList.toggle("active");
+        });
 
     }
 
 });
-alert("Trip booked");
+
+const heroSearchBtn = document.getElementById("hero-search-btn");
+
+if (heroSearchBtn) {
+
+    heroSearchBtn.addEventListener("click", () => {
+
+        const searchInput = document.getElementById("search-input");
+
+        if (!searchInput) return;
+
+        const search = searchInput.value.trim();
+
+        if (search) {
+
+            window.location.href =
+                `pages/explore.html?search=${encodeURIComponent(search)}`;
+
+        }
+
+    });
+
+}
+
+    
+
 const reveals=document.querySelectorAll(".reveal");
 
 window.addEventListener("scroll",()=>{
@@ -315,3 +331,22 @@ item.classList.add("active");
 });
 
 });
+const reveals = document.querySelectorAll(".reveal");
+
+if (reveals.length) {
+
+    window.addEventListener("scroll", () => {
+
+        reveals.forEach(item => {
+
+            const top = item.getBoundingClientRect().top;
+
+            if (top < window.innerHeight - 100) {
+                item.classList.add("active");
+            }
+
+        });
+
+    });
+
+}
