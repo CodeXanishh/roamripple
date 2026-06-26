@@ -282,3 +282,18 @@ document.addEventListener("DOMContentLoaded", () => {
         aiPanel.classList.toggle("active");
     });
 });
+document.getElementById("hero-search-btn").addEventListener("click", () => {
+
+    const search = document
+        .getElementById("search-input")
+        .value
+        .trim();
+
+    if(search){
+
+        window.location.href =
+        `pages/explore.html?search=${encodeURIComponent(search)}`;
+
+    }
+
+});
