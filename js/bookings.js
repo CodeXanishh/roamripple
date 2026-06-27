@@ -1,57 +1,69 @@
-// Load bookings from localStorage
-import { getBookings } from "./bookingService.js";
-
-const bookings = getBookings();
+import { auth } from "./firebase/firebase-config.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
+import { getBookings, deleteBooking } from "./bookingService.js";
 
 const listContainer = document.getElementById("booking-list");
 const clearBtn = document.getElementById("clear-all");
 
-// Render all bookings
-function loadBookings() {
-    listContainer.innerHTML = "";
+onAuthStateChanged(auth, async (user) => {
 
-    if (bookings.length === 0) {
-        listContainer.innerHTML = `
-            <p style="color:#9ca3af; font-size:16px; text-align:center;">
-                No bookings yet...
-            </p>
-        `;
+    if (!user) {
+        listContainer.innerHTML = "<p>Please login first.</p>";
         return;
     }
 
-    bookings.forEach((item, index) => {
-        const card = document.createElement("div");
-        card.classList.add("booking-card");
+    let bookings = await getBookings(user.uid);
 
-        card.innerHTML = `
-            <div class="booking-info">
+    function render() {
+
+        listContainer.innerHTML = "";
+
+        if (bookings.length === 0) {
+            listContainer.innerHTML = "<p>No bookings yet.</p>";
+            return;
+        }
+
+        bookings.forEach((item) => {
+
+            const card = document.createElement("div");
+            card.className = "booking-card";
+
+            card.innerHTML = `
                 <h3>${item.place}</h3>
                 <p>Date: ${item.date}</p>
-            </div>
+                <button class="delete-btn" data-id="${item.id}">
+                    Remove
+                </button>
+            `;
 
-            <button class="delete-btn" onclick="deleteBooking(${index})">
-                Remove
-            </button>
-        `;
+            card.querySelector(".delete-btn").onclick = async () => {
 
-        listContainer.appendChild(card);
-    });
-}
+                await deleteBooking(item.id);
 
-// Delete a single booking
-function deleteBooking(index) {
-    bookings.splice(index, 1);
-    localStorage.setItem("bookings", JSON.stringify(bookings));
-    loadBookings();
-}
+                bookings = bookings.filter(b => b.id !== item.id);
 
-// Clear all bookings
-clearBtn.addEventListener("click", () => {
-    if (confirm("Clear all bookings?")) {
-        bookings = [];
-        localStorage.setItem("bookings", JSON.stringify(bookings));
-        loadBookings();
+                render();
+
+            };
+
+            listContainer.appendChild(card);
+
+        });
+
     }
-});
 
-loadBookings();
+    render();
+
+    clearBtn.onclick = async () => {
+
+        for (const booking of bookings) {
+            await deleteBooking(booking.id);
+        }
+
+        bookings = [];
+
+        render();
+
+    };
+
+});

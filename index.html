@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 
@@ -31,15 +33,27 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
 
-        <div class="nav-actions">
-            <button id="open-ai" class="nav-btn secondary">AI Guide</button>
+        <div class="nav-buttons">
 
-            <a href="pages/bookings.html">
-                <button class="nav-btn primary">
-                    My Trips
-                </button>
-            </a>
-        </div>
+    <span id="user-name"></span>
+
+    <button id="open-ai">AI Guide</button>
+
+    <a href="pages/bookings.html" class="trip-btn" id="trip-btn">
+        My Trips
+    </a>
+
+    <a href="pages/login.html" id="login-link" class="trip-btn">
+        Login
+    </a>
+
+    <a href="pages/signup.html" id="signup-link" class="trip-btn">
+        Sign Up
+    </a>
+
+    <button id="logout-btn">Logout</button>
+
+</div>
 
     </nav>
 </header>
@@ -70,9 +84,10 @@
                 placeholder="Search destinations..."
             >
 
-            <button>
+            <button id="hero-search-btn">
                 Explore
-            </button>
+               </button>
+            <div id="suggestions" class="suggestions-box"></div>
 
         </div>
 
@@ -98,6 +113,7 @@
     </div>
 
 </section>
+
     <section class="destinations fade-in" id="destinations">
         <div class="card">
 
@@ -325,7 +341,7 @@
     </div>
 
 </section>
-<section class="features reveal"></section>
+
     <!-- Modal (hidden for now) -->
     <div class="modal" id="modal">
      <div class="modal-content two-column">
@@ -336,8 +352,6 @@
 
         <h2 id="modal-title"></h2>
         <p id="modal-desc"></p>
-
-        <div id="weather-box" class="weather-box"></div>
 
         <label>Select Date</label>
         <input type="date" id="visit-date">
@@ -375,6 +389,72 @@
         <button id="ai-send">Send</button>
     </div>
 </div>
+<section id="contact" class="contact-section">
+
+    <h2>Contact Us</h2>
+    <p>Have questions or suggestions? We'd love to hear from you.</p>
+
+    <div class="contact-container">
+
+        <div class="contact-info">
+
+            <h3>Get In Touch</h3>
+
+            <p><i class="fa-solid fa-envelope"></i> : 
+        <a href="mailto:anishkumar120205@gmail.com">
+            anishkumar120205@gmail.com
+        </a>
+    </p>
+
+            <p>📍 Greater Noida, India</p>
+
+            <p><i class="fa-brands fa-github"></i> :
+       <a href="https://github.com/CodeXanishh" target="_blank">
+        CodeXanishh
+    </a>
+            </p>
+
+            <p> <i class="fa-brands fa-linkedin"></i> :
+    <a href="https://www.linkedin.com/in/anish-k-4b84a529b"
+       target="_blank">
+        Anish Kumar
+        </a>
+            </p>
+
+        </div>
+
+             <form class="contact-form" id="contact-form">
+
+    <input
+        type="text"
+        id="contact-name"
+        placeholder="Your Name"
+        required
+    >
+
+    <input
+        type="email"
+        id="contact-email"
+        placeholder="Your Email"
+        required
+    >
+
+    <textarea
+        id="contact-message"
+        placeholder="Your Message"
+        rows="6"
+        required
+    ></textarea>
+
+    <button type="submit">
+        Send Message
+    </button>
+
+</form>
+
+    </div>
+
+</section>
 
 <footer class="footer">
 
@@ -441,7 +521,13 @@
     </div>
 
 </footer>
+    <div id="toast" class="toast"></div>
+    <script src="js/toast.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/script.js"></script>
+    <script type="module" src="js/firebase/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser/dist/email.min.js"></script>
+    <script src="js/contact.js"></script>
+    
 </body>
 </html>

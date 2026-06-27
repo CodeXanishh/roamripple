@@ -7,5 +7,8 @@ const places = [
     { name: "Kedarnath", price: "₹6,500 onwards" },
     { name: "Kashmir", price: "₹8,999 onwards" },
     { name: "Pondicherry", price: "₹4,750 onwards" },
-    { name: "Ladakh", price: "₹9,999 onwards" }
+    { name: "Ladakh", price: "₹9,999 onwards" },
+    { name: "Manali", price: "₹5,999 onwards" }
 ];
+
+export { places };

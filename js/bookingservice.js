@@ -1,23 +1,48 @@
-export function getBookings() {
-    return JSON.parse(localStorage.getItem("bookings")) || [];
-}
+import { db } from "./firebase/firebase-config.js";
 
-export function saveBooking(place, date) {
-    const bookings = getBookings();
+import {
+    collection,
+    addDoc,
+    getDocs,
+    query,
+    where,
+    deleteDoc,
+    doc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-    bookings.push({
+// Save booking
+export async function saveBooking(userId, place, date) {
+
+    await addDoc(collection(db, "bookings"), {
+        userId,
         place,
         date,
-        bookedAt: new Date().toISOString()
+        createdAt: serverTimestamp()
     });
 
-    localStorage.setItem("bookings", JSON.stringify(bookings));
 }
 
-export function deleteBooking(index) {
-    const bookings = getBookings();
+// Get bookings of logged in user
+export async function getBookings(userId) {
 
-    bookings.splice(index, 1);
+    const q = query(
+        collection(db, "bookings"),
+        where("userId", "==", userId)
+    );
 
-    localStorage.setItem("bookings", JSON.stringify(bookings));
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    }));
+
+}
+
+// Delete booking
+export async function deleteBooking(id) {
+
+    await deleteDoc(doc(db, "bookings", id));
+
 }

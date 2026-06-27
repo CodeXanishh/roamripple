@@ -9,10 +9,12 @@
 @import url("features.css");
 @import url("testimonials.css");
 @import url("footer.css");
-@import url("responsive.css");
-@import url("auth.css");
+@import url("contact.css");
+@import url("toast.css");
+
+
 /* Base */
-body {
+
     body{
     margin:0;
     font-family:"Poppins",sans-serif;
@@ -21,7 +23,7 @@ body {
     animation:fadeInBody .6s ease;
 
 }
-}
+
 
 html {
     scroll-behavior: smooth;
@@ -90,7 +92,7 @@ html {
 }
 
 .hero-content p {
-    color: #566577;
+    color: #b2c5dc;
     margin-bottom: 25px;
 }
 
@@ -436,4 +438,4 @@ span{
 
 color:var(--accent);
 
-}
+} 

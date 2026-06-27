@@ -14,17 +14,29 @@ const bookBtn = document.getElementById("book-btn");
 // REAL PHOTO FETCHER (WIKIPEDIA)
 // =========================
 async function getRealImage(placeName) {
-    const url = `https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&origin=*&titles=${placeName}`;
-    const res = await fetch(url);
-    const data = await res.json();
 
-    const pages = data.query.pages;
-    const page = pages[Object.keys(pages)[0]];
+    if (placeName === "Manali") {
+        placeName = "Manali, Himachal Pradesh";
+    }
 
-    return page.original
-        ? page.original.source
-        : "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
+    try {
+        const url = `https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=original&origin=*&titles=${encodeURIComponent(placeName)}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const pages = data.query.pages;
+        const page = pages[Object.keys(pages)[0]];
+
+        return page.original
+            ? page.original.source
+            : "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
+
+    } catch {
+        return "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
+    }
 }
+
 
 // =========================
 // DESTINATIONS WITH REAL PHOTOS
@@ -54,6 +66,10 @@ const destinations = {
 // =========================
 const searchInput = document.getElementById("search-input");
 const suggestionsBox = document.getElementById("suggestions");
+
+if (!searchInput || !suggestionsBox) {
+    console.error("Search elements not found");
+} else {
 
 searchInput.addEventListener("input", async () => {
     let text = searchInput.value.trim();
@@ -118,7 +134,7 @@ searchInput.addEventListener("keydown", async (e) => {
         `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=1&q=${text}`
     );
     const data = await res.json();
-    if (!data.length) return alert("No location found");
+    if (!data.length) return showToast("No location found", "warning");
     openPlaceFromSearch(data[0]);
 });
 
@@ -142,7 +158,7 @@ async function openPlaceFromSearch(place) {
         .then(r => r.text())
         .then(t => (document.getElementById("weather-box").innerText = t));
 }
-
+}
 // =========================
 // CARD CLICKS WITH REAL PHOTOS
 // =========================
@@ -157,11 +173,13 @@ document.querySelectorAll(".card").forEach(card => {
         modalDesc.innerText = destinations[place].desc;
         document.getElementById("map-frame").src = destinations[place].map;
 
-        fetch(`https://wttr.in/${place}?format=3`)
-            .then(r => r.text())
-            .then(t => (document.getElementById("weather-box").innerText = t));
+       fetch(`https://wttr.in/${place}?format=3`)
+    .then(r => r.text())
+    .then(weather => {
+        document.getElementById("weather-box").innerText = weather;
+    });
 
-        modal.style.display = "flex";
+modal.style.display = "flex";
     });
 });
 
@@ -180,13 +198,13 @@ bookBtn.addEventListener("click", () => {
     const place = modalTitle.innerText;
     const date = dateInput.value;
 
-    if (!date) return alert("Please select a date");
+    if (!date) return showToast("Please select a date", "warning");
 
     let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
     bookings.push({ place, date });
     localStorage.setItem("bookings", JSON.stringify(bookings));
 
-    alert(`Trip to ${place} booked`);
+    showToast(`Trip to ${place} booked successfully!`);
     modal.style.display = "none";
 });
 
@@ -331,22 +349,4 @@ item.classList.add("active");
 });
 
 });
-const reveals = document.querySelectorAll(".reveal");
 
-if (reveals.length) {
-
-    window.addEventListener("scroll", () => {
-
-        reveals.forEach(item => {
-
-            const top = item.getBoundingClientRect().top;
-
-            if (top < window.innerHeight - 100) {
-                item.classList.add("active");
-            }
-
-        });
-
-    });
-
-}

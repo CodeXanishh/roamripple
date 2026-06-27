@@ -65,8 +65,9 @@ box-shadow:0 10px 30px rgba(0,0,0,.1);
     color:#3B82F6;
 }
 
-.nav-actions{
+.nav-buttons{
     display:flex;
+    align-items:center;
     gap:15px;
 }
 
@@ -96,4 +97,59 @@ box-shadow:0 10px 30px rgba(0,0,0,.1);
 .navbar.scrolled{
     background:#07111F;
     box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+#user-name{
+
+display:flex;
+align-items:center;
+color:white;
+font-weight:600;
+white-space:nowrap;
+
+}
+
+.nav-buttons button,
+.trip-btn{
+
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+    text-decoration:none;
+
+}
+
+#open-ai{
+
+    background:white;
+    color:#111827;
+
+}
+
+.trip-btn{
+
+    background:#3B82F6;
+    color:white;
+
+}
+
+#logout-btn{
+
+    background:#ef4444;
+    color:white;
+
+}
+
+#logout-btn:hover{
+
+    background:#dc2626;
+
+}
+
+#open-ai:hover,
+.trip-btn:hover{
+
+    transform:translateY(-2px);
+
 }

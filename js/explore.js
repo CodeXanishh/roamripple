@@ -1,7 +1,8 @@
 // Popular places list
 import { places } from "./data.js";
 import { getRealImage, getWeather } from "./api.js";
-import { saveBooking } from "./bookingService.js";
+import { auth } from "./firebase/firebase-config.js";
+import { saveBooking } from "./bookingservice.js";
 
 
 // Function to get real image from Wikipedia
@@ -26,6 +27,7 @@ async function loadPlaces() {
     const img = await getRealImage(place.name);
 
         container.innerHTML += `
+    
     <div class="card">
         <img src="${img}" class="card-img">
 
@@ -61,7 +63,14 @@ function attachCardClicks() {
             modalTitle.innerText = place;
             modalDesc.innerText = "A beautiful destination full of stories.";
 
-            modalImg.src = await getRealImage(place);
+           try {
+             modalImg.src = await getRealImage(place);
+                } catch {
+                    modalImg.src = `../images/${place.toLowerCase()}.jpg`;
+                }
+                const img = await getRealImage(place.name);
+
+console.log(place.name, img);
 
             document.getElementById("map-frame").src =
                 `https://www.google.com/maps?q=${place}&z=12&output=embed`;
@@ -79,14 +88,36 @@ window.addEventListener("click", e => {
 });
 
 // Booking
-bookBtn.addEventListener("click", () => {
+bookBtn.addEventListener("click", async () => {
+
+    const user = auth.currentUser;
+
+    if (!user) {
+        showToast("Please login first.","warning");
+        return;
+    }
+
     const place = modalTitle.innerText;
     const date = dateInput.value;
 
-    if (!date) return alert("Select a date first");
+    if (!date) {
+        showToast("Select a date first","warning");
+        return;
+    }
 
-    saveBooking(place, date);
+    try {
 
-alert(`Trip to ${place} booked successfully!`);
-    modal.style.display = "none";
+        await saveBooking(user.uid, place, date);
+
+        showToast(`Trip to ${place} booked successfully!`);
+
+        modal.style.display = "none";
+
+    } catch (error) {
+
+        console.error(error);
+        showToast(error.message, "error");
+
+    }
+
 });
