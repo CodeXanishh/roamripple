@@ -215,6 +215,8 @@ const aiInput = document.getElementById("ai-input");
 const aiSend = document.getElementById("ai-send");
 const aiChat = document.getElementById("ai-chat");
 
+if(aiInput && aiSend && aiChat) {
+
 aiSend.addEventListener("click", () => {
     let msg = aiInput.value.trim();
     if (!msg) return;
@@ -288,7 +290,7 @@ aiInput.addEventListener("keydown", (e) => {
         aiSend.click();
     }
 });
-
+}
 // =========================
 // AI PANEL TOGGLE
 // =========================
@@ -330,23 +332,23 @@ if (heroSearchBtn) {
 
 }
 
-    
+    const backToTop = document.getElementById("backToTop");
 
-const reveals=document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
 
-window.addEventListener("scroll",()=>{
-
-reveals.forEach(item=>{
-
-const top=item.getBoundingClientRect().top;
-
-if(top<window.innerHeight-100){
-
-item.classList.add("active");
-
-}
+    if (window.scrollY > 400) {
+        backToTop.style.display = "block";
+    } else {
+        backToTop.style.display = "none";
+    }
 
 });
 
-});
+backToTop.addEventListener("click", () => {
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});

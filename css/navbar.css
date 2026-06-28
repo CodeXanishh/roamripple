@@ -1,41 +1,31 @@
 .navbar{
-
-transition:.35s;
-
-}
-
-.navbar.scrolled{
-
-padding:14px 8%;
-
-background:rgba(255,255,255,.95);
-
-backdrop-filter:blur(14px);
-
-box-shadow:0 10px 30px rgba(0,0,0,.1);
-
-}
-.navbar{
     position:fixed;
     top:0;
     left:0;
+    right:0;
     width:100%;
+    z-index:99999;
     padding:18px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
     background:rgba(7,17,31,.75);
     backdrop-filter:blur(12px);
-    z-index:1000;
+    transition:all .35s ease;
     box-sizing:border-box;
-    transition:.3s;
+}
+
+.navbar.scrolled{
+    padding:14px 8%;
+    background:#07111F;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
 }
 
 .logo{
     text-decoration:none;
-    font-size:28px;
+    font-size:22px;
     font-weight:700;
-    color:white;
+    color:#fff;
 }
 
 .logo span{
@@ -56,7 +46,7 @@ box-shadow:0 10px 30px rgba(0,0,0,.1);
 
 .nav-links a{
     text-decoration:none;
-    color:white;
+    color:#fff;
     font-weight:500;
     transition:.3s;
 }
@@ -71,85 +61,105 @@ box-shadow:0 10px 30px rgba(0,0,0,.1);
     gap:15px;
 }
 
-.nav-btn{
+#user-name{
+    color:white;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+.nav-buttons button,
+.trip-btn{
     padding:10px 18px;
     border:none;
     border-radius:10px;
     cursor:pointer;
     font-weight:600;
-    transition:.3s;
-}
-
-.nav-btn.primary{
-    background:#3B82F6;
-    color:white;
-}
-
-.nav-btn.secondary{
-    background:white;
-    color:#111827;
-}
-
-.nav-btn:hover{
-    transform:translateY(-2px);
-}
-
-.navbar.scrolled{
-    background:#07111F;
-    box-shadow:0 8px 25px rgba(0,0,0,.25);
-}
-#user-name{
-
-display:flex;
-align-items:center;
-color:white;
-font-weight:600;
-white-space:nowrap;
-
-}
-
-.nav-buttons button,
-.trip-btn{
-
-    padding:10px 20px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:600;
     text-decoration:none;
-
 }
 
 #open-ai{
-
-    background:white;
+    background:#fff;
     color:#111827;
-
 }
 
 .trip-btn{
-
     background:#3B82F6;
     color:white;
-
 }
 
 #logout-btn{
-
     background:#ef4444;
     color:white;
-
 }
 
 #logout-btn:hover{
-
     background:#dc2626;
-
 }
 
 #open-ai:hover,
 .trip-btn:hover{
-
     transform:translateY(-2px);
+}
+
+.menu-toggle{
+    display:none;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width:768px){
+
+.navbar{
+    flex-wrap:wrap;
+    padding:15px 20px;
+}
+
+
+.nav-links,
+.nav-buttons{
+    display:none;
+    width:100%;
+    background:#07111F;
+}
+
+.nav-links.active,
+.nav-buttons.active{
+    display:flex;
+}
+
+.nav-links{
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+    padding:25px 0 10px;
+    margin:0;
+}
+
+.nav-buttons{
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+    padding:10px 0 25px;
+}
+
+.nav-buttons button,
+.trip-btn{
+    width:220px;
+    text-align:center;
+}
+
+
+
+
+.menu-toggle{
+    display:block;
+    font-size:28px;
+    color:#fff;
+    cursor:pointer;
+    padding:8px;
+}
+
+.navbar{
+    padding:15px 18px;
+}
 
 }

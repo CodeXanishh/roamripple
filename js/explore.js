@@ -24,8 +24,8 @@ async function loadPlaces() {
     const container = document.getElementById("explore-list");
 
     for (let place of places) {
-    const img = await getRealImage(place.name);
-
+     const img = await getRealImage(place.name);
+    
         container.innerHTML += `
     
     <div class="card">
@@ -54,33 +54,47 @@ const dateInput = document.getElementById("visit-date");
 
 // On clicking a place
 function attachCardClicks() {
+
     document.querySelectorAll(".card").forEach(card => {
+
         card.addEventListener("click", async () => {
+
             const place = card.querySelector("h2").innerText;
 
-            modal.style.display = "flex";
+            showLoader();
 
-            modalTitle.innerText = place;
-            modalDesc.innerText = "A beautiful destination full of stories.";
+            try {
 
-           try {
-             modalImg.src = await getRealImage(place);
+                modal.style.display = "flex";
+
+                modalTitle.innerText = place;
+                modalDesc.innerText = "A beautiful destination full of stories.";
+
+                try {
+                    modalImg.src = await getRealImage(place);
                 } catch {
                     modalImg.src = `../images/${place.toLowerCase()}.jpg`;
                 }
-                const img = await getRealImage(place.name);
 
-console.log(place.name, img);
+                console.log(place);
 
-            document.getElementById("map-frame").src =
-                `https://www.google.com/maps?q=${place}&z=12&output=embed`;
+                document.getElementById("map-frame").src =
+                    `https://www.google.com/maps?q=${place}&z=12&output=embed`;
 
-           const weather = await getWeather(place);
-           document.getElementById("weather-box").innerText = weather;
+                const weather = await getWeather(place);
+                document.getElementById("weather-box").innerText = weather;
+
+            } finally {
+
+                hideLoader();
+
+            }
+
         });
-    });
-}
 
+    });
+
+}
 // Close modal
 closeBtn.addEventListener("click", () => modal.style.display = "none");
 window.addEventListener("click", e => {

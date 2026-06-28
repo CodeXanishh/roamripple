@@ -126,3 +126,99 @@ body {
 .clear-btn:hover {
     background: #d93737;
 }
+.empty-bookings{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.empty-icon{
+    font-size:80px;
+    margin-bottom:20px;
+}
+
+.empty-bookings h2{
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.empty-bookings p{
+    color:#666;
+    margin-bottom:25px;
+}
+
+.explore-empty-btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:#2563eb;
+    color:#fff;
+    text-decoration:none;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.explore-empty-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+.confirm-modal{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    display: none;   /* IMPORTANT */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+@media(max-width:768px){
+
+.booking-container{
+
+padding:20px;
+
+}
+
+.booking-card{
+
+padding:20px;
+
+}
+
+.bottom-actions{
+
+flex-direction:column;
+gap:15px;
+
+}
+
+.action-btn{
+
+width:100%;
+
+}
+
+
+.modal-content{
+    width:95%;
+    max-height:90vh;
+    overflow-y:auto;
+    padding:18px;
+}
+
+.modal-img{
+    height:220px;
+}
+
+iframe{
+    height:220px;
+}
+
+#book-btn{
+    width:100%;
+}
+
+input[type="date"]{
+    width:100%;
+}
+
+
+}

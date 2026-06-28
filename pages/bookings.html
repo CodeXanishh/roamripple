@@ -7,6 +7,11 @@
 
     <!-- Link a separate bookings.css for clean design -->
     <link rel="stylesheet" href="../css/bookings.css">
+    <meta name="description" content="RoamRipple - AI Powered Travel Planner with Weather, Maps, Firebase Authentication and Smart Booking.">
+
+<meta name="keywords" content="Travel Planner, Firebase, JavaScript, AI Travel, Weather API, Google Maps">
+
+<meta name="author" content="Anish Kumar">
 </head>
 
 <body>
@@ -27,6 +32,31 @@
         <button id="clear-all" class="action-btn clear-btn">Clear All Bookings</button>
         <a href="../index.html" class="action-btn">Back to Home</a>
     </div>
+    <div id="confirm-modal" class="confirm-modal">
+
+    <div class="confirm-box">
+
+        <h2>⚠️ Confirm Action</h2>
+
+        <p id="confirm-message">
+            Are you sure?
+        </p>
+
+        <div class="confirm-buttons">
+
+            <button id="cancel-confirm">
+                Cancel
+            </button>
+
+            <button id="ok-confirm">
+                Delete
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
     <script type="module" src="../js/bookings.js"></script>
 

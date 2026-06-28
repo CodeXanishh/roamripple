@@ -147,3 +147,24 @@
     color:#2563eb;
     margin-right:10px;
 }
+@media(max-width:768px){
+
+.contact-container{
+
+grid-template-columns:1fr;
+
+}
+
+.contact-info,
+.contact-form{
+
+padding:20px;
+
+}
+
+}
+.contact-info p{
+
+word-break:break-word;
+
+}

@@ -10,7 +10,10 @@ align-items:center;
 }
 
 .hero-search input{
-width:90%;
+
+    width:100%;
+    max-width:450px;
+
 }
 
 .hero-search button{
@@ -87,5 +90,40 @@ width:100%;
 border-radius:10px;
 
 }
+
+
+.hero{
+    min-height:100vh;
+    padding:110px 20px 60px;
+}
+
+.hero h1{
+    font-size:2.4rem;
+}
+
+.hero p{
+    font-size:1rem;
+}
+
+.hero-search{
+    flex-direction:column;
+    align-items:center;
+}
+
+.hero-search input{
+    width:100%;
+    max-width:320px;
+}
+
+.hero-search button{
+    width:100%;
+    max-width:320px;
+}
+
+.hero-stats{
+    flex-direction:column;
+    gap:20px;
+}
+
 
 }

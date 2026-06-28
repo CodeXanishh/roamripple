@@ -7,55 +7,72 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/toast.css">
+    <link rel="icon" href="images/logo.png">
+    <meta name="description" content="RoamRipple - AI Powered Travel Planner with Weather, Maps, Firebase Authentication and Smart Booking.">
+
+<meta name="keywords" content="Travel Planner, Firebase, JavaScript, AI Travel, Weather API, Google Maps">
+
+<meta name="author" content="Anish Kumar">
+<meta property="og:title" content="RoamRipple">
+<meta property="og:description" content="AI Powered Travel Planner">
+<meta property="og:type" content="website">
+
+
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
+     
+   <div id="toast" class="toast"></div>
+<header>
+<nav class="navbar">
 
-    <header>
-    <nav class="navbar">
+    <a href="index.html" class="logo">
+        🌍 <span>RoamRipple</span>
+    </a>
 
-        <a href="index.html" class="logo">
-            🌍 <span>RoamRipple</span>
+    <div class="menu-toggle">☰</div>
+
+    <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="pages/explore.html">Explore</a></li>
+        <li><a href="pages/bookings.html">Bookings</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-buttons">
+
+        <span id="user-name"></span>
+
+        <button id="open-ai">
+            AI Guide
+        </button>
+
+        <a href="pages/bookings.html" class="trip-btn" id="trip-btn">
+            My Trips
         </a>
-               <div class="menu-toggle">
 
-                ☰
+        <a href="pages/login.html" id="login-link" class="trip-btn">
+            Login
+        </a>
 
-               </div> 
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="pages/explore.html">Explore</a></li>
-            <li><a href="pages/bookings.html">Bookings</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <a href="pages/signup.html" id="signup-link" class="trip-btn">
+            Sign Up
+        </a>
 
-        <div class="nav-buttons">
+        <button id="logout-btn">
+            Logout
+        </button>
 
-    <span id="user-name"></span>
+    </div>
 
-    <button id="open-ai">AI Guide</button>
+</nav>
 
-    <a href="pages/bookings.html" class="trip-btn" id="trip-btn">
-        My Trips
-    </a>
-
-    <a href="pages/login.html" id="login-link" class="trip-btn">
-        Login
-    </a>
-
-    <a href="pages/signup.html" id="signup-link" class="trip-btn">
-        Sign Up
-    </a>
-
-    <button id="logout-btn">Logout</button>
-
-</div>
-
-    </nav>
 </header>
 
 
@@ -215,7 +232,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 </div>
  </section>
- <section class="features">
+ <section  id="about" class="features">
 
     <h2>Why Choose RoamRipple?</h2>
 
@@ -298,7 +315,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
             <div class="user">
                 <img src="https://i.pravatar.cc/80?img=1" alt="User">
                 <div>
-                    <h4>Anish Kumar</h4>
+                    <h4>Raj yadav</h4>
                     <span>Software Engineering Student</span>
                 </div>
             </div>
@@ -516,12 +533,19 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
     <div class="footer-bottom">
 
-        © 2026 RoamRipple • Built by Anish Kumar
-
+        © 2026 RoamRipple • Made with ❤️ by <strong>Anish Kumar</strong>
     </div>
 
 </footer>
-    <div id="toast" class="toast"></div>
+<div id="loader" class="loader-overlay">
+    <div class="loader"></div>
+</div>
+<button id="backToTop">
+    ↑
+</button>
+    
+    <script src="js/loader.js"></script>
+    
     <script src="js/toast.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/script.js"></script>

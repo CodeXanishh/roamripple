@@ -19,9 +19,28 @@ onAuthStateChanged(auth, async (user) => {
         listContainer.innerHTML = "";
 
         if (bookings.length === 0) {
-            listContainer.innerHTML = "<p>No bookings yet.</p>";
-            return;
-        }
+
+              listContainer.innerHTML = `
+               <div class="empty-bookings">
+
+            <div class="empty-icon">🧳</div>
+
+            <h2>No Trips Yet</h2>
+
+            <p>
+                You haven't booked any trips yet.
+                Start exploring amazing destinations.
+            </p>
+
+            <a href="../index.html" class="explore-empty-btn">
+                Explore Destinations
+            </a>
+
+        </div>
+    `;
+
+    return;
+}
 
         bookings.forEach((item) => {
 

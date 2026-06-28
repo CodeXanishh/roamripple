@@ -1,0 +1,41 @@
+.confirm-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+}
+
+.confirm-box{
+    width:380px;
+    background:white;
+    border-radius:16px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.confirm-buttons{
+    margin-top:25px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.confirm-buttons button{
+    padding:12px 24px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#cancel-confirm{
+    background:#d1d5db;
+}
+
+#ok-confirm{
+    background:#dc2626;
+    color:white;
+}
