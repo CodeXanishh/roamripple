@@ -155,8 +155,13 @@ async function openPlaceFromSearch(place) {
         `https://www.google.com/maps?q=${place.lat},${place.lon}&z=14&output=embed`;
 
     fetch(`https://wttr.in/${name}?format=3`)
-        .then(r => r.text())
-        .then(t => (document.getElementById("weather-box").innerText = t));
+.then(r => r.text())
+.then(t => {
+    const weatherBox = document.getElementById("weather-box");
+    if (weatherBox) {
+        weatherBox.innerText = t;
+    }
+});
 }
 }
 // =========================
@@ -172,12 +177,14 @@ document.querySelectorAll(".card").forEach(card => {
         modalTitle.innerText = place;
         modalDesc.innerText = destinations[place].desc;
         document.getElementById("map-frame").src = destinations[place].map;
-
-       fetch(`https://wttr.in/${place}?format=3`)
-    .then(r => r.text())
-    .then(weather => {
-        document.getElementById("weather-box").innerText = weather;
-    });
+fetch(`https://wttr.in/${place}?format=3`)
+.then(r => r.text())
+.then(weather => {
+    const weatherBox = document.getElementById("weather-box");
+    if (weatherBox) {
+        weatherBox.innerText = weather;
+    }
+});
 
 modal.style.display = "flex";
     });
@@ -331,24 +338,27 @@ if (heroSearchBtn) {
     });
 
 }
+const backToTop = document.getElementById("backToTop");
 
-    const backToTop = document.getElementById("backToTop");
+if (backToTop) {
 
-window.addEventListener("scroll", () => {
+    window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 400) {
-        backToTop.style.display = "block";
-    } else {
-        backToTop.style.display = "none";
-    }
+        if (window.scrollY > 400) {
+            backToTop.style.display = "block";
+        } else {
+            backToTop.style.display = "none";
+        }
 
-});
-
-backToTop.addEventListener("click", () => {
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
     });
 
-});
+    backToTop.addEventListener("click", () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+}
