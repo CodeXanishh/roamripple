@@ -12,7 +12,7 @@
     flex-direction:column;
     opacity:0;
     transition:.35s;
-    z-index:9999;
+    z-index:10001;
 }
 
 .ai-helper.active{
